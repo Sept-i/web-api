@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <button id="btn">唐伯虎</button>
+    <script>
+        // 点按钮弹对话框
+        // <!-- 事件三要素：1事件源 2事件类型 3事件处理程序 -->
+        // 1 事件源 ——事件被触发的对象  谁——按钮
+
+        var btn = document.getElementById("btn");
+        // 2事件类型 怎么触发 触发什么事件 如鼠标点击还是鼠标经过
+        // 3 事件处理程序： 通过函数赋值的方式去完成(对象的行为都是通过函数去完成)
+        btn.onclick = function () {
+            alert('点秋香');
+        }
+    </script>
+
+</body>
+
+</html>
