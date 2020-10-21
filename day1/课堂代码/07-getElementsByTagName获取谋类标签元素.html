@@ -14,17 +14,26 @@
         <li>秋</li>
         <li>冬</li>
     </ul>
-    
-    <ol>
-        <li>春</li>
-        <li>夏</li>
-        <li>秋</li>
-        <li>冬</li>
+
+    <ol id='ol'>
+        <li>生僻字</li>
+        <li>生僻字</li>
+        <li>生僻字</li>
+        <li>生僻字</li>
     </ol>
     <script>
-        //根据标签名获取，，以伪数组形式存储
-        var lis = document.getElementsByTagName('li');
-        console.log(lis); 
+        // 目标：获取ol里面的li
+        //根据标签名获取，，获取过来元素对象的集合 以伪数组形式存储
+        /* var lis = document.getElementsByTagName('li');
+        console.log(lis);  //找的是页面中所有的li */
+        /* // 第一种 先找ol 的id，再找ol的id下面的全部li
+        var ol = document.getElementById('ol').getElementsByTagName('li')
+        console.log(ol); */
+
+        /* // 第二种 找ol这个标签名，返回的结果是【ol】以伪数组的方式来存储，
+        // 再找伪数组下标为0的ol里面的所有的li (伪数组里面的一个个元素才是对象，才能使用getElementsByTagName)
+        var ol=document.getElementsByTagName('ol'); //[ol]
+        ol[0].getElementsByTagName('li');  */
     </script>
 </body>
 

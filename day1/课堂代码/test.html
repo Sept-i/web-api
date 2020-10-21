@@ -14,22 +14,18 @@
 </head>
 
 <body>
-    <button id="mg">1</button>
-    <button id="ls">2</button><br>
-    <img src="images/玫瑰.jpeg" alt="">
+    <button id="mg">🌹</button>
+    <button id="ch">🌈</button>
+    <img src="images/玫瑰.jpeg" alt=""><br>
     <script>
-        var mg = document.getElementById('mg');
-        var ls = document.getElementById('ls');
-        var img = document.querySelector('img');
-        mg.onclick = function () {
+        var oMg = document.getElementById('mg');
+        var oCh = document.getElementById('ch');
+        var img = document.querySelector('img')
+        oMg.onclick = function () {
             img.src = 'images/玫瑰.jpeg';
-            img.title = '玫瑰'
-
         }
-        ls.onclick = function () {
+        oCh.onclick = function () {
             img.src = 'images/3.jpeg';
-            img.title = '彩虹'
-
         }
     </script>
 </body>
