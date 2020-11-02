@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .search {
+            position: relative;
+            width: 178px;
+            margin: 100px;
+        }
+
+        .con {
+            display: none;
+            position: absolute;
+            top: -40px;
+            width: 171px;
+            border: 1px solid rgba(0, 0, 0, .2);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+            padding: 5px 0;
+            font-size: 18px;
+            line-height: 20px;
+            color: #333;
+        }
+
+        .con::before {
+            content: '';
+            width: 0;
+            height: 0;
+            position: absolute;
+            top: 28px;
+            left: 18px;
+            border: 8px solid #000;
+            border-style: solid dashed dashed;
+            border-color: #fff transparent transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="search">
+        <div class="con"></div>
+        <input type="text" placeholder="请输入您的快递单号" class="jd">
+    </div>
+
+    <script>
+        //  1先获取两个元素
+        var con = document.querySelector('.con');
+        var jd = document.querySelector('.jd');
+        // 给输入框添加键盘按下弹起事件 addEventListener
+        jd.addEventListener('keyup', function () {
+            // 判断条件 如果(if)输入框里的内容为空就隐藏放大提示盒子 ，否则就显示放大提示盒子并且把输入框的内容给提示盒子的内容
+            if (jd.value === '') {
+                con.style.display = 'none';
+            } else {
+                con.style.display = 'block';
+                con.innerHTML = jd.value;
+            }
+
+        })
+        // 输入框失去焦点【onblur】，就隐藏提示盒子 如果输入框获得焦点【onfucos】输入框里的内容不为空，就把提示盒子设置为显示
+
+        jd.onblur = function () {
+            con.style.display = 'none';
+
+        }
+        jd.onfucos = function () {
+            if (this.value != '') {
+                con.style.display = 'block';
+
+            }
+
+        }
+    </script>
+</body>
+
+</html>

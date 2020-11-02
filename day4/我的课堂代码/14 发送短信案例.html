@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    手机号码：<input type="number"><button>发送</button>
+    <script>
+        // 获取button按钮
+        var btn = document.querySelector('button');
+        //定义剩下的秒数
+        var times = 3;
+        // 给按钮添加点击事件 addEventListener
+        btn.addEventListener('click', function () {
+            // 按钮点击后，把按钮禁用 【disabled 为true 】
+            btn.disabled = true;
+            // 弄个倒计时定时器setInterval并且取个名字放变量里(因为后面要关闭定时器),判断：如果时间等于0，清除定时器并且复原禁用按钮，按钮的内容变成发送，时间3秒
+            var timer = setInterval(function () {
+                if (times == 0) {
+                    clearInterval(timer);
+                    btn.disabled = false;
+                    btn.innerHTML = '发送';
+                    times = 3;
+
+
+                } else {
+                    // 否则 按钮的内容显示的是还剩下多少秒 并且times(时间)自减
+                    btn.innerHTML = '还剩下' + times + '秒';
+                    times--;
+                }
+
+            }, 1000)
+
+        })
+    </script>
+</body>
+
+</html>

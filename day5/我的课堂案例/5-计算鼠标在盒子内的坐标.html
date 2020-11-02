@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+            margin: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        // 目标：鼠标在盒子内经过能得到  鼠标距离盒子左右的距离
+        // 1 先得到鼠标在文档页面的中的坐标 (e.pageX, e.pageY);
+        // 2 再得到盒子在文档页面中的距离，(box.offsetLeft ,box.offsetTop)
+        // 3 用得到的鼠标在文档页面的中的坐标  减去  盒子在文档页面中的距离  得到  鼠标距离盒子左右的距离
+
+
+        // 1 获取box
+        var box = document.querySelector('.box');
+        //  box绑定鼠标经过事件
+        box.addEventListener('mousemove', function (e) {
+            var x = e.pageX - this.offsetLeft;
+            var y = e.pageY - this.offsetTop;
+            this.innerHTML = 'X坐标是' + x + 'Y坐标是' + y;
+
+        })
+        //  !!注意大小写
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>关闭定时器</button>
+    <img src="../../../../57就业班资料/5.web API/04/2-案例/images/ad.jpg" alt="" class="ad">
+    <script>
+        // 1获取图片
+        var ad = document.querySelector('.ad');
+        // 2 设置定时器
+        var time=setTimeout(function () {
+            ad.style.display = 'none';
+        }, 2000);
+
+        // 获取按钮
+        var Obtn=document.querySelector('button');
+        Obtn.onclick=function(){
+            clearTimeout(time);
+           
+        }
+
+    </script>
+</body>
+
+</html>

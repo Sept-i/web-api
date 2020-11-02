@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        姓名：<input type="text">
+        邮箱：<input type="email">
+        <button>添加</button>
+    </div>
+    <table border="1" width="500">
+        <thead>
+            <tr>
+                <td>姓名</td>
+                <td>邮箱</td>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+    // 选择元素
+    var aInput = document.querySelectorAll('input');
+    var oBtn = document.querySelector('button');
+    var oTbody = document.querySelector('tbody');
+    // 给 oBtn 绑定点击事件
+    oBtn.addEventListener('click', function() {
+        if(aInput[0].value === '' || aInput[1].value === '') {
+            alert('不能为空');
+            return false;
+        }
+        // 生成一个 tr
+        var tr = document.createElement('tr');
+        // 生成二个 td，第一个td里面放姓名，第二个td里面放邮箱
+        var td = document.createElement('td');
+        td.innerHTML = aInput[0].value;
+        // 把 td 怼到 tr 里面
+        tr.appendChild(td);
+        var td = document.createElement('td');
+        td.innerHTML = aInput[1].value;
+        // 把 td 怼到 tr 里面
+        tr.appendChild(td);
+        // 把 tr 怼到 tbody 里面
+        oTbody.appendChild(tr);
+
+        // 清空输入框里面的内容
+        aInput[0].value = '';
+        aInput[1].value = '';
+    });
+    </script>
+</body>
+</html>

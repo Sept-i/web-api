@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        .active {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="active">1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+    <button>5</button>
+    <script>
+    /* var aBtn = document.querySelectorAll('button');
+    for(var i = 0; i < aBtn.length; i ++) {
+        aBtn[i].onclick = function() {
+            // 干掉其他的
+            for(var i = 0; i < aBtn.length; i ++) {
+                aBtn[i].style.backgroundColor = '';
+            }
+            // 高亮自己的
+            this.style.backgroundColor = 'red';
+        };
+    } */
+
+    /* var aBtn = document.querySelectorAll('button');
+    for(var i = 0; i < aBtn.length; i ++) {
+        aBtn[i].onclick = function() {
+            // 干掉其他的
+            document.querySelector('.active').className = '';
+            // 高亮自己的
+            this.className = 'active';
+        };
+    } */
+
+    var aBtn = document.querySelectorAll('button');
+    var index = 0;
+    for(var i = 0; i < aBtn.length; i ++) {
+        aBtn[i].index = i;
+        aBtn[i].onclick = function() {
+            // 干掉上一个
+            aBtn[index].className = '';
+            // 高亮自己的
+            this.className = 'active';
+            // 每次走完之后把当前的索引变成“上一个”
+            index = this.index;
+        };
+    }
+    </script>
+</body>
+
+</html>

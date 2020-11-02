@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+
+        span {
+            position: absolute;
+            left: 0;
+            top: 200px;
+            display: block;
+            width: 150px;
+            height: 150px;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <!-- <button>点击夏雨荷才走</button>
+    <span>夏雨荷</span> -->
+    <script>
+        var Div = document.querySelector('div');
+        //  增加回调函数
+        animate(Div1, 500);
+        animate(oDiv2, 500, function () {
+            oDiv.style.background = 'red';
+        });
+
+        function animate(ele, target) { //// ele 运动的元素、target 运动的目标位置
+            clearInterval(ele.timer); //7 解决重复点击按钮运动元素的时候越来越快的 Bug  【在点击之前清除所有定时器】
+            ele.timer = setInterval(function () {
+                var step = (target - ele.offsetLeft) / 10; //运动步长=(目标位置 - 每步的当前位置)/10
+                // 向上取整，向下取整
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                if (ele.offsetLeft == target) { //注意这里是等号 ，因为最后的步长【step】是1
+                    clearInterval(ele.timer);
+                    callback && callback();
+
+                } else {
+                    ele.style.left = ele.offsetLeft + step + 'px';
+                }
+            }, 30);
+        }
+        animate(Div, 800);
+    </script>
+</body>
+
+</html>

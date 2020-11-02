@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div,
+        p {
+
+            height: 30px;
+            width: 300px;
+            border: 2px solid thistle;
+            margin: auto;
+            margin-bottom: 30px;
+            border-radius: 30px;
+        }
+
+        button {
+            position: relative;
+            left: 220px;
+            top: -26px;
+            width: 50px;
+            height: 50px;
+            outline: none;
+            border: 0;
+            border: 1px solid thistle;
+            background-color: thistle;
+            margin-left: 500px;
+            margin-top: 200px;
+            border-radius: 50%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <button>按钮</button>
+    <div>当前时间是</div>
+    <p>当前时间</p>
+    <script>
+        var obtn = document.querySelector('button');
+        var otime = document.querySelector('div');
+        obtn.onclick = function () {
+            otime.innerText = getDate();
+        }
+
+        function getDate() {
+            var date = new Date();
+            // 我们写一个 2019年 5月 1日 星期三
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var dates = date.getDate();
+            var arr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+            var day = date.getDay();
+            return '今天是：' + year + '年' + month + '月' + dates + '日 ' + arr[day];
+        }
+        // 我们元素可以不用添加事件
+        var p = document.querySelector('p');
+        p.innerText = getDate();
+    </script>
+</body>
+
+</html>

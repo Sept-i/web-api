@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="username">
+    <input type="checkbox" name="" id="remember"> 记住用户名
+    <script>
+        var username = document.querySelector('#username');
+        var remember = document.querySelector('#remember');
+        // 一开始就判断有没有存储的key
+        if (localStorage.getItem('username')) { //null
+            // 如果有就获取出来并赋值给输入框
+            username.value = localStorage.getItem('username');
+            // 然后把复选框的状态变为真(选中)
+            remember.checked = true;
+        }
+        remember.addEventListener('change', function () {
+            // 如果复选框的状态为真就存储 否则就删除
+            if (this.checked) {
+                // localStorage.setItem('获取后面内容的key', 内容) 存储到网页localStorage里边
+                localStorage.setItem('username', username.value)
+
+            } else {
+                // removeItem('要删除的key') 删除
+                localStorage.removeItem('username');  
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .yeye {
+            position: relative;
+            margin: 50px;
+        }
+        .father {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin: 150px;
+        }
+
+        .son {
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+            margin-left: 45px;
+        }
+
+        .w {
+            height: 200px;
+            background-color: skyblue;
+            margin: 0 auto 200px;
+            padding: 10px;
+            border: 15px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="yeye">
+        <div class="father">
+            <div class="son"></div>
+        </div>
+    </div>
+
+    <script>
+        // 需求：获取任意一个盒子到 body 的距离
+
+        /* var oSon = document.querySelector('.son');
+        var oParent = document.querySelector('.father');
+        console.log(oSon.offsetLeft + oParent.offsetLeft); */
+
+        var oSon = document.querySelector('.son');
+
+        /* function getPosition(ele) {
+            var obj = {
+                left: ele.offsetLeft,
+                top: ele.offsetTop
+            };
+            // 判断传过来的 ele 有没有【有定位的父级】
+            while (ele.offsetParent) {
+                obj.left += ele.offsetParent.offsetLeft;
+                obj.top += ele.offsetParent.offsetTop;
+                // 每次走完之后，把有定位的父级变成当前元素 ele
+                ele = ele.offsetParent;
+            }
+            return obj;
+        } */
+
+        function getPosition(ele) {
+            var obj = {
+                left: ele.offsetLeft,
+                top: ele.offsetTop
+            };
+            // 判断传过来的 ele 有没有【有定位的父级】
+            while (ele = ele.offsetParent) {
+                obj.left += ele.offsetLeft;
+                obj.top += ele.offsetTop;
+            }
+            return obj;
+        }
+        var res = getPosition(oSon);
+        console.log(res);
+
+    </script>
+</body>
+
+</html>

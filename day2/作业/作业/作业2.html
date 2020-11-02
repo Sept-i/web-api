@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>西斯</li>
+        <li>貂蝉</li>
+        <li>尼姑</li>
+        <li>拉斯</li>
+    </ul>
+    <button>按钮</button>
+    <script>
+    // 选择元素
+    /* var oBtn = document.querySelector('button');
+    var oUl = document.querySelector('ul'); */
+    function $(selector) {
+        return document.querySelector(selector);
+    }
+    var oBtn = $('button');
+    var oUl = $('ul');
+    // 给按钮绑定点击事件
+    oBtn.onclick = function() {
+        // 创建 li
+        var oLi = document.createElement('li');
+        oLi.innerHTML = Math.random();
+        // 把 li 怼到 ul 内容的最前面
+        oUl.insertBefore(oLi, oUl.children[0]);
+    };
+
+    // 用事件委托给 li 绑定事件，绑定到 ul 上，目的是为了对新增的 li 也有效
+    oUl.addEventListener('click', function(e) {
+        // 先干掉其他的，注意 oUl.children 是动态变化的，只要新增后，oUl.children 也会新增
+        for(var i = 0 ;i < oUl.children.length; i ++) {
+            oUl.children[i].style.backgroundColor = '';
+        }
+        // 再操作自己
+        // e.target // 点谁就是谁
+        // 如果说点击的是 li 的时候才触发，防止点击 ul 的时候全部变色
+        if(e.target.tagName.toLowerCase() === 'li') {
+            e.target.style.backgroundColor = 'pink';
+        }
+    });
+    </script>
+</body>
+</html>

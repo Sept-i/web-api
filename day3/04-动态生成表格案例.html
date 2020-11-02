@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table {
+            width: 500px;
+            margin: 100px auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        td,
+        th {
+            border: 1px solid #333;
+        }
+
+        thead tr {
+            height: 40px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <table cellspacing="0">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        // 1.先去准备好学生的数据
+        // []
+        // {}
+        // [{},{}]
+        // {info: []}
+        var datas = [{
+            name: '魏璎珞',
+            subject: 'JavaScript',
+            score: 100
+        }, {
+            name: '弘历',
+            subject: 'JavaScript',
+            score: 98
+        }, {
+            name: '傅恒',
+            subject: 'JavaScript',
+            score: 99
+        }, {
+            name: '明玉',
+            subject: 'JavaScript',
+            score: 88
+        }, {
+            name: '大猪蹄子',
+            subject: 'JavaScript',
+            score: 0
+        }];
+
+        // 2. 往tbody 里面创建行： 有几个人（通过数组的长度）我们就创建几行
+        var tbody = document.querySelector('tbody');
+        // 根据数组的长度来遍历
+        for (var i = 0; i < datas.length; i++) {
+            // 每次创建 tr
+            var tr = document.createElement('tr');
+            // 创建 4 个 td 怼到 tr 里面
+            // console.log(datas[i]);
+            // 遍历数组里面的每一个对象（datas[i]）
+            var obj = datas[i];
+            for (var attr in obj) {
+                // 每次遍历的时候生成 td
+                var td = document.createElement('td');
+                // 把 td 怼到 tr 里面
+                // obj[attr] // 属性值
+                td.innerHTML = obj[attr];
+                tr.appendChild(td);
+            }
+            // 循环走完补充一个 td，里面放删除按钮
+            var td = document.createElement('td');
+            td.innerHTML = '<a href="javascript:;">删除</a>'
+            tr.appendChild(td);
+
+            // tbody.appendChild(tr);
+            tbody.insertBefore(tr, tbody.children[0]);
+            // 每次获取到的都是第一个 a
+            document.querySelector('a').onclick = function() {
+                // console.log('hello');
+                // this 代表 a 标签，删除的是 tr
+                // this.parentNode.parentNode.remove();
+                tbody.removeChild(this.parentNode.parentNode);
+            };
+        }
+
+        // 走到这里，页面上面已经有了 所有的删除按钮
+        /* var aA = document.querySelectorAll('a');
+        for(var i = 0; i < aA.length; i ++) {
+            aA[i].onclick = function() {
+                this.parentNode.parentNode.remove();
+            };
+        } */
+
+        /* var obj = {
+            name: 'ifer',
+            age: 18
+        };
+        for(var attr in obj) {
+            console.log(obj[attr]);
+        } */
+    </script>
+</body>
+
+</html>

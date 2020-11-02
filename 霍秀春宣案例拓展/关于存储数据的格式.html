@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // localStorage.setItem('username', 'ifer');
+    // 存储数据，要求存储是字符串，不能直接存储一个对象
+    // 要求把这个对象序列化成字符串
+    // localStorage.setItem('msg', JSON.stringify(['ifer', 'test', 'aaa']));
+    // 获取过来的数据也是字符串，不方便操作
+    var msg = localStorage.getItem('msg');
+    // 可以进行反序列化，把字符串转成对象
+    console.log(JSON.parse(msg));
+    </script>
+</body>
+</html>

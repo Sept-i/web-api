@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            position: relative;
+            width: 400px;
+            border-bottom: 1px solid #ccc;
+            margin: 100px auto;
+        }
+
+        .box input {
+            width: 370px;
+            height: 30px;
+            border: 0;
+            outline: none;
+        }
+
+        .box img {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            width: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <label for="">
+            <img src="../2-案例/images/close.png" alt="" id="eye">
+        </label>
+        <input type="password" name="" id="pwd">
+    </div>
+    <script>
+        // 1 获取元素
+        var eye = document.getElementById('eye');
+        console.log(eye);
+        var pwd = document.getElementById('pwd');
+
+        // 2 注册事件 处理程序
+        // 第1111种
+        // flag相当于一个开关，，用flag变量 来判断flag的值，如果是1就切换成文本框，flag设置成0 ，如果是0就切换成密码框，flag设置为1
+        /* var flag = 0; //刚开始是0
+        eye.onclick = function () {
+            // 点击一次之后，flag一定要变化，否则永远是0，就不会变化了
+            if (flag == 0) { //先判断 再变化
+                pwd.type = 'text';
+                eye.src = '../2-案例/images/open.png';
+                flag = 1; //重新赋值变为1
+            } else {
+                pwd.type = 'password';
+                eye.src = '../2-案例/images/close.png';
+                flag = 0;
+            }
+        } */
+
+        //  第二种 
+        var flag = true; //true(1)  flase(0)
+        eye.onclick = function () {
+            pwd.type = flag ? 'text' : 'password';
+            eye.src = flag ? '../2-案例/images/open.png' : '../2-案例/images/close.png';
+            //每次对flag进行取反
+            flag = !flag;
+
+        }
+    </script>
+</body>
+
+</html>

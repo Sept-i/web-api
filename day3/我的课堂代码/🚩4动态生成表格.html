@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table {
+            width: 500px;
+            margin: 100px auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        td,
+        th {
+            border: 1px solid #333;
+        }
+
+        thead tr {
+            height: 40px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <table cellspacing="0">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var datas = [{
+            name: '三日月',
+            subject: 'JavaScript',
+            score: 100
+        }, {
+            name: '龙井',
+            subject: 'JavaScript',
+            score: 98
+        }, {
+            name: '三日月',
+            subject: 'JavaScript',
+            score: 99
+        }, {
+            name: '龙井',
+            subject: 'JavaScript',
+            score: 88
+        }, {
+            name: '三日月',
+            subject: 'JavaScript',
+            score: 50
+        }];
+        // 先创建 再添加
+
+        // 获取tbody，往tbody里面创建行，有几个人就有几行，几个人通过数组长度来得到
+        var tbody = document.querySelector('tbody');
+        // 根据数组长度来遍历
+        for (var i = 0; i < datas.length; i++) {
+            // 每次创建行
+            var tr = document.createElement('tr');
+
+            // 接下里创建四个列放到行里面去 遍历数组里的每个对象，datas[i] 放到每一列里面去
+            for (var k in datas[i]) {
+                // 每次遍历生成列，然后把每个对象的属性值放到列的内容里去，再把列加到行后面
+                var td = document.createElement('td')
+                td.innerHTML = datas[i][k];
+                tr.appendChild(td);
+            }
+            // 循环走完补充一个 td，里面放删除按钮，先创建td，再把删除链接放到刚刚创建的列里面去，把刚刚创建的列追加到每一行后面 appenChild 
+            var td = document.createElement('td');
+            td.innerHTML = '<a href ="JavaScript:;">删除</a>';
+            tr.appendChild(td);
+            // 把每行追加到tbody的孩子行的第一行前面  insertBefore
+            tbody.insertBefore(tr, tbody.children[0]);
+            // 获取a 绑定点击事件，事件处理程序a把a的父亲的父亲(tr)删除
+            document.querySelector('a').onclick = function () {
+                tbody.removeChild(this.parentNode.parentNode)
+
+            };
+
+
+        }
+    </script>
+</body>
+
+</html>

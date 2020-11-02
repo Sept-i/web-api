@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="../../../../57就业班资料/5.web API/03/2-案例/images/angel.gif" alt="">
+    <script>
+        var img=document.querySelector('img');
+        img.style.position='absolute';
+        
+        document.onmousemove=function(e){
+            img.style.left=e.clientX-48+'px';
+            img.style.top=e.clientY-40+'px';
+
+        }
+    </script>
+</body>
+</html>

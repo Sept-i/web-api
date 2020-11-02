@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <input type="checkbox" id="all"> 全选
+        <input type="checkbox" id="reverse"> 反选
+    </div>
+    <div id="sing-checkbox">
+        <p><input type="checkbox"> 苹果</p>
+        <p><input type="checkbox"> 橘子</p>
+        <p><input type="checkbox"> 栗子</p>
+        <p><input type="checkbox"> 香蕉</p>
+    </div>
+    <script>
+        var oAll = document.querySelector('#all');
+        var aCheckbox = document.querySelectorAll('#sing-checkbox input'); // [input, input, input, ...]
+        // 1. 根据全选控制单选
+        oAll.onclick = function () {
+            for (var i = 0; i < aCheckbox.length; i++) {
+                // 这个地方不能写死，要根据全选的状态来，获取全选的状态就是 this.checked
+                aCheckbox[i].checked = this.checked;
+            }
+        };
+        // 2. 根据单选控制全选
+        /* for (var i = 0; i < aCheckbox.length; i++) {
+            aCheckbox[i].onclick = function() {
+                var flag = true;
+                // 每次点击的时候去遍历所有单选，如果发现有一个没选中，全选的状态就可以取消了
+                for (var i = 0; i < aCheckbox.length; i++) {
+                    if(!aCheckbox[i].checked) {
+                        // 如果说进来了，就是没选中
+                        flag = false; // false 这里代表的就是就是没选中
+                        break;
+                    }
+                }
+                oAll.checked = flag;
+            };
+        } */
+        for (var i = 0; i < aCheckbox.length; i++) {
+            aCheckbox[i].onclick = function () {
+                oAll.checked = document.querySelectorAll('#sing-checkbox input:checked').length === aCheckbox.length;
+            };
+        }
+    </script>
+</body>
+
+</html>

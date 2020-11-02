@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script>
+        var ul = document.querySelector('ul');
+        for (var i = 0; i < ul.children.length; i++) {
+            ul.children[i].style.backgroundColor = i % 2 ? 'red' : 'green';
+        }
+        // 需求：经过li的时候变成pink色，离开的时候恢复到默认的颜色
+        var licolor = '';
+        for (var i = 0; i < ul.children.length; i++) {
+            ul.children[i].onmouseover = function () {
+                // 经过的时候记一下 ，目的是离开的时候有个“家”
+                licolor = this.style.backgroundColor;
+                this.style.backgroundColor = 'pink';
+            }
+            ul.children[i].onmouseout = function () {
+                this.style.backgroundColor = licolor;
+            }
+        }
+    </script>
+</body>
+
+</html>
